@@ -2,10 +2,12 @@ import Carousel from "./components/Carousel";
 
 function App() {
   const images = [
-    'file:///Users/alinamytsa/Downloads/lights-g2a9430fb5_1920.jpg',
-    'file:///Users/alinamytsa/Downloads/sand-dunes-g65183a523_1920.jpg',
-    'file:///Users/alinamytsa/Downloads/beach-gb35fe8bb5_1920.jpg'
+    'https://images.unsplash.com/photo-1613310023042-ad79320c00ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
+    'https://images.unsplash.com/photo-1610809027249-86c649feacd5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+    'https://images.unsplash.com/photo-1612676239016-41e2c92b8e06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
   ]
+
+  console.log(images)
   return (
    <Carousel images={images}/>
   );

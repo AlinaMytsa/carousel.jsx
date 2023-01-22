@@ -10,17 +10,28 @@ class Carousel extends React.Component {
     }
   }
   componentDidMount() {
-      setInterval(() => {
-        this.setState({
-          imageIndex: this.state.imageIndex++
-        })
-      }, 5000)
+      setInterval(() => {}, 5000)
   }
 
   previousImage = () =>{
     if (this.state.imageIndex < 1){
-      this.setState({imageIndex})
+      this.setState({imageIndex: this.props.images.length - 1})
+    } else {
+      this.setState({imageIndex: this.props.images.length + 1})
     }
+  }
+
+  nextImage = () =>{
+    if (this.state.imageIndex > this.props.images.length - 2){
+      this.setState({imageIndex: 0})
+    } else {
+      this.setState({imageIndex: this.state.imageIndex + 1})
+    }
+  }
+
+  onChangeImage = (type) => () =>{
+    if (type === 'previous') this.previousImage();
+    if (type === 'next') this.nextImage();
   }
 
   render() {
@@ -39,14 +50,14 @@ class Carousel extends React.Component {
     )
     return (
       <div id="carousel" className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-inner">
-
-        </div>
-        <button className="carousel-control-prev" data-bs-target="#carousel" type="button" data-bs-slide="prev">
+        <div className="carousel-inner">{renderImage}</div>
+        <button className="carousel-control-prev" data-bs-target="#carousel" type="button" data-bs-slide="prev"
+         onClick={this.onChangeImage('previous')}>
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
         </button>
-        <button className="carousel-control-next" data-bs-target="#carousel" type="button" data-bs-slide="next">
+        <button className="carousel-control-next" data-bs-target="#carousel" type="button" data-bs-slide="next"
+        onClick={this.onChangeImage('next')}>
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
